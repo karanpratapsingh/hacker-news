@@ -10,6 +10,7 @@
  * @property {string} url
  */
 
+const HACKER_NEWS_API_URL = "https://hacker-news.firebaseio.com/v0";
 const PAGE_SIZE = 10;
 let stories = [];
 let start = 0;
@@ -21,7 +22,7 @@ let end = PAGE_SIZE;
  * @returns {Promise<void>}
  */
 async function fetchStories() {
-  return fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
+  return fetch(`${HACKER_NEWS_API_URL}/topstories.json`)
     .then((res) => res.json())
     .then((ids) => {
       stories = ids;
@@ -32,8 +33,8 @@ async function fetchStories() {
  * @returns {Promise<Post>}
  */
 async function fetchItem(id) {
-  return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(
-    (res) => res.json()
+  return fetch(`${HACKER_NEWS_API_URL}/item/${id}.json`).then((res) =>
+    res.json()
   );
 }
 
