@@ -1,0 +1,12 @@
+{
+  "name": "hn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "14.2.1"
+  }
+}
