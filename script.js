@@ -100,10 +100,10 @@ function appendPost(post) {
   const posts = document.getElementById("posts");
 
   const template = `
-        <a class="text-title" href="${url}" target="_blank">${title}</a>
-        <i class="text-muted">${getPrimaryDomain(url)}</i>
-        <span class="text-muted">${score} points by ${by}</span>
-        <span class="text-muted">${formatRelativeTime(time)}</span>
+      <a class="text-title" href="${url}" target="_blank">${title}</a>
+      <i class="text-muted">${getPrimaryDomain(url)}</i>
+      <span class="text-muted">${score} points by ${by}</span>
+      <span class="text-muted">${formatRelativeTime(time)}</span>
     `;
 
   const postElement = document.createElement("div");
@@ -113,23 +113,23 @@ function appendPost(post) {
   posts.appendChild(postElement);
 }
 
-fetchStories().then(() => {
-  paginateStories(start, end);
+fetchStories()
+  .then(() => paginateStories(start, end))
+  .then(() => {
+    const body = document.querySelector("body");
+    const moreBtn = document.createElement("button");
+    moreBtn.id = "more";
+    moreBtn.textContent = "More";
+    body.appendChild(moreBtn);
 
-  const body = document.querySelector("body");
-  const moreBtn = document.createElement("button");
-  moreBtn.id = "more";
-  moreBtn.textContent = "More";
-  body.appendChild(moreBtn);
+    moreBtn.addEventListener("click", async () => {
+      if (!stories.length) {
+        console.error("no more stories");
+        return;
+      }
 
-  moreBtn.addEventListener("click", async () => {
-    if (!stories.length) {
-      console.error("no more stories");
-      return;
-    }
-
-    start = end + 1;
-    end = end + PAGE_SIZE;
-    await paginateStories();
+      start = end + 1;
+      end = end + PAGE_SIZE;
+      await paginateStories();
+    });
   });
-});

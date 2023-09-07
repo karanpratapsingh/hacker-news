@@ -1,3 +1,5 @@
+/* Defaults */
+
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -15,6 +17,8 @@ nav {
   font-style: italic;
 }
 
+/* Styles */
+
 #posts {
   display: grid;
   row-gap: 1em;
@@ -28,12 +32,13 @@ nav {
 }
 
 #more {
-  font-style: italic;
   margin: 1rem 0rem;
   padding: 0.5rem 1rem;
+  font-style: italic;
+  font-size: 14px;
+  color: black;
   background-color: white;
   border: 1px solid black;
-  color: black;
   text-decoration: none;
 }
 
@@ -62,7 +67,7 @@ nav {
 
 .text-muted {
   font-weight: 300;
-  color: #808080;
+  color: #757575;
   font-size: 14px;
   margin-top: 0.25em;
 }
