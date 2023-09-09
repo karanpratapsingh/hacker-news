@@ -1,8 +1,8 @@
 import { fetchItem, formatRelativeTime, getStoryTemplate } from "./common.js";
 
 /** @typedef {object} Comment
- * @property {string} by
  * @property {number} id
+ * @property {string} by
  * @property {number[]} kids
  * @property {number} parent
  * @property {string} text
@@ -42,16 +42,21 @@ async function appendComment(parentId, childId) {
   commentElement.classList.add("comment");
   commentElement.innerHTML = template;
 
+  let clicked = false; // Closure state
+
   if (kids) {
+    commentElement.classList.add("pointer");
     commentElement.onclick = (event) => {
       event.preventDefault();
       event.stopPropagation();
 
-      kids.forEach((childId) => {
-        appendComment(id, childId); // Recursive call
-      });
+      if (!clicked) {
+        kids.forEach((childId) => {
+          appendComment(id, childId); // Recursive call
+        });
+        clicked = true;
+      }
     };
-    commentElement.classList.add("pointer");
   }
 
   parent.appendChild(commentElement);
@@ -65,6 +70,8 @@ if (!storyId) {
 }
 
 fetchItem(storyId).then((story) => {
+  document.title = story.title;
+
   const storySection = document.getElementById("story");
 
   const storyElement = document.createElement("div");

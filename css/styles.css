@@ -29,6 +29,11 @@ nav {
   color: black;
 }
 
+.text-subheading {
+  font-weight: 500;
+  color: black;
+}
+
 .text-title {
   font-weight: 400;
   color: black;
@@ -98,6 +103,6 @@ nav {
 
 @media screen and (max-width: 720px) {
   body {
-    padding: 0rem 10vw;
+    padding: 0rem 5vw;
   }
 }

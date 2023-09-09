@@ -5,14 +5,14 @@ import {
 } from "./common.js";
 
 /** @typedef {object} Story
- * @property {string} by
- * @property {number} descendants
  * @property {number} id
+ * @property {string} type
+ * @property {string} title
+ * @property {string} by
  * @property {number[]} kids
+ * @property {number} descendants
  * @property {number} score
  * @property {number} time
- * @property {string} title
- * @property {string} type
  * @property {string} url
  */
 
