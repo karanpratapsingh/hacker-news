@@ -71,7 +71,6 @@ nav {
   font-style: italic;
   font-size: 14px;
   color: black;
-  background-color: white;
   border: 1px solid black;
   text-decoration: none;
 }
@@ -81,11 +80,6 @@ nav {
 }
 
 /* story.html */
-
-#comments {
-  display: grid;
-  grid-template-columns: 1fr;
-}
 
 .comment {
   display: grid;
