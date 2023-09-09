@@ -1,0 +1,103 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0rem 25vw;
+}
+
+nav {
+  text-align: center;
+  font-style: italic;
+}
+
+/* Utils */
+
+.pointer {
+  cursor: pointer;
+}
+
+/* Typography */
+
+.text-heading {
+  font-weight: 700;
+  font-size: 25px;
+  color: black;
+}
+
+.text-title {
+  font-weight: 400;
+  color: black;
+}
+
+.text {
+  font-weight: 300;
+  font-size: 14px;
+  color: black;
+}
+
+.text-muted {
+  font-weight: 300;
+  color: #757575;
+  font-size: 14px;
+}
+
+/* index.html */
+
+#stories {
+  display: grid;
+  row-gap: 1em;
+  grid-template-columns: 1fr;
+}
+
+.story {
+  display: grid;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+}
+
+#more {
+  margin: 1rem 0rem;
+  padding: 0.5rem 1rem;
+  font-style: italic;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+#more:hover {
+  cursor: pointer;
+}
+
+/* story.html */
+
+#comments {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.comment {
+  display: grid;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+}
+
+.comment-header {
+  display: grid;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 720px) {
+  body {
+    padding: 0rem 10vw;
+  }
+}
