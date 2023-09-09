@@ -1,4 +1,4 @@
-import { fetchItem, formatRelativeTime, getStoryTemplate } from "./common.js";
+import { fetchItem, formatRelativeTime, getStoryTemplate } from './common.js';
 
 /** @typedef {object} Comment
  * @property {number} id
@@ -16,11 +16,11 @@ async function appendComment(parentId, childId) {
   const comment = await fetchItem(childId);
   const { id, by, kids, text, time, deleted } = comment;
 
-  let replies = "";
+  let replies = '';
 
   if (kids) {
     const total = kids.length;
-    replies = `${total} ${total < 2 ? "reply" : "replies"}`;
+    replies = `${total} ${total < 2 ? 'reply' : 'replies'}`;
   }
 
   let template = `
@@ -37,21 +37,21 @@ async function appendComment(parentId, childId) {
     `;
   }
 
-  const commentElement = document.createElement("div");
+  const commentElement = document.createElement('div');
   commentElement.id = id;
-  commentElement.classList.add("comment");
+  commentElement.classList.add('comment');
   commentElement.innerHTML = template;
 
   let clicked = false; // Closure state
 
   if (kids) {
-    commentElement.classList.add("pointer");
-    commentElement.onclick = (event) => {
+    commentElement.classList.add('pointer');
+    commentElement.onclick = event => {
       event.preventDefault();
       event.stopPropagation();
 
       if (!clicked) {
-        kids.forEach((childId) => {
+        kids.forEach(childId => {
           appendComment(id, childId); // Recursive call
         });
         clicked = true;
@@ -63,24 +63,24 @@ async function appendComment(parentId, childId) {
 }
 
 const url = new URL(window.location.href);
-const storyId = url.searchParams.get("id");
+const storyId = url.searchParams.get('id');
 
 if (!storyId) {
-  throw new Error("invalid story id");
+  throw new Error('invalid story id');
 }
 
-fetchItem(storyId).then((story) => {
+fetchItem(storyId).then(story => {
   document.title = story.title;
 
-  const storySection = document.getElementById("story");
+  const storySection = document.getElementById('story');
 
-  const storyElement = document.createElement("div");
-  storyElement.classList.add("story");
+  const storyElement = document.createElement('div');
+  storyElement.classList.add('story');
   storyElement.innerHTML = getStoryTemplate(story);
 
   storySection.appendChild(storyElement);
 
-  story.kids.forEach((id) => {
-    appendComment("comments", id); // "comments" is the root element
+  story.kids.forEach(id => {
+    appendComment('comments', id); // "comments" is the root element
   });
 });

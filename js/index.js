@@ -1,8 +1,4 @@
-import {
-  API_URL,
-  fetchItem,
-  getStoryTemplate
-} from "./common.js";
+import { API_URL, fetchItem, getStoryTemplate } from './common.js';
 
 /** @typedef {object} Story
  * @property {number} id
@@ -28,8 +24,8 @@ let end = PAGE_SIZE;
  */
 async function fetchStories() {
   return fetch(`${API_URL}/topstories.json`)
-    .then((res) => res.json())
-    .then((ids) => {
+    .then(res => res.json())
+    .then(ids => {
       stories = ids;
     });
 }
@@ -44,7 +40,7 @@ async function paginateStories() {
 
   try {
     const stories = await Promise.all(storiesPromises);
-    stories.forEach((story) => appendStory(story));
+    stories.forEach(story => appendStory(story));
   } catch (error) {
     console.error(error);
   }
@@ -55,15 +51,13 @@ async function paginateStories() {
  * @returns {void}
  */
 function appendStory(story) {
-  const { id, by, score, time, title, url } = story;
-
-  const stories = document.getElementById("stories");
+  const stories = document.getElementById('stories');
 
   let template = getStoryTemplate(story);
-  template += `<a class="text-muted" href="/story?id=${id}" target="_blank">comments</a>`;
+  template += `<a class="text-muted" href="/story?id=${story.id}" target="_blank">comments</a>`;
 
-  const storyElement = document.createElement("div");
-  storyElement.classList.add("story");
+  const storyElement = document.createElement('div');
+  storyElement.classList.add('story');
   storyElement.innerHTML = template;
 
   stories.appendChild(storyElement);
@@ -72,15 +66,15 @@ function appendStory(story) {
 fetchStories()
   .then(() => paginateStories(start, end))
   .then(() => {
-    const body = document.querySelector("body");
-    const moreBtn = document.createElement("button");
-    moreBtn.id = "more";
-    moreBtn.textContent = "More";
+    const body = document.querySelector('body');
+    const moreBtn = document.createElement('button');
+    moreBtn.id = 'more';
+    moreBtn.textContent = 'More';
     body.appendChild(moreBtn);
 
-    moreBtn.addEventListener("click", async () => {
+    moreBtn.addEventListener('click', async () => {
       if (!stories.length) {
-        console.warn("no more stories");
+        console.warn('no more stories');
         return;
       }
 
