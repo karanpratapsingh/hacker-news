@@ -1,4 +1,4 @@
-# Hacker News
+# [Hacker News](https://minimal-hacker-news.vercel.app/)
 
 Minimalist hacker news clone with a better UI (for personal use) made using the [official API](https://github.com/HackerNews/API).
 
