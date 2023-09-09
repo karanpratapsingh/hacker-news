@@ -1,8 +1,13 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/story",
+      "destination": "/story.html"
     }
   ]
 }
