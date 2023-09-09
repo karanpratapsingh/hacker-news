@@ -1,8 +1,4 @@
-import {
-  fetchItem,
-  formatRelativeTime,
-  getStoryTemplate
-} from "./common.js";
+import { fetchItem, formatRelativeTime, getStoryTemplate } from "./common.js";
 
 /** @typedef {object} Comment
  * @property {string} by
@@ -37,8 +33,8 @@ async function appendComment(parentId, childId) {
 
   if (deleted) {
     template = `
-    <i class="text-muted">deleted</i>
-  `;
+      <i class="text-muted">deleted</i>
+    `;
   }
 
   const commentElement = document.createElement("div");
