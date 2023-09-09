@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "start": "serve .",
+    "start": "serve public",
     "lint": "prettier --write ."
   },
   "devDependencies": {
