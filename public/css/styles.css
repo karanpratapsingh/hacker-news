@@ -90,6 +90,11 @@ nav {
   margin-bottom: 1rem;
 }
 
+.comment:nth-last-child(1) {
+  /* Last element of list */
+  margin-bottom: 0.5rem;
+}
+
 .comment-header {
   display: grid;
   border-bottom: 1px solid black;
