@@ -29,6 +29,7 @@ async function appendComment(parentId, childId) {
         <u id="${id}-replies" class="text-muted">${replies}</u>
     </div>
     <p>${text}</p>
+    <a id="${id}-comments" />
   `;
 
   if (deleted) {
@@ -56,10 +57,15 @@ async function appendComment(parentId, childId) {
         event.stopPropagation();
 
         if (!clicked) {
+          const focusElement = document.getElementById(`${id}-comments`);
+
           kids.forEach(childId => {
             appendComment(id, childId); // Recursive call
           });
 
+          if (focusElement) {
+            focusElement.scrollIntoView({ block: 'center' });
+          }
           clicked = true;
         }
       };
