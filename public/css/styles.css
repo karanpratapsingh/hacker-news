@@ -1,5 +1,6 @@
 * {
   font-family: 'Roboto', sans-serif;
+  word-wrap: break-word;
 }
 
 html {
@@ -84,7 +85,6 @@ nav {
 /* story.html */
 
 .comment {
-  display: grid;
   padding: 0.5rem 1rem;
   border: 1px solid black;
   margin-bottom: 1rem;
