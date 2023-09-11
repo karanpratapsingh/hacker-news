@@ -26,7 +26,7 @@ async function appendComment(parentId, childId) {
   let template = `
     <div class="comment-header">
         <span class="text-muted">by ${by} ${formatRelativeTime(time)}</span>
-        <span class="text-muted" style="text-align: right;">${replies}</span>
+        <u id="${id}-replies" class="text-muted">${replies}</u>
     </div>
     <p>${text}</p>
   `;
@@ -41,25 +41,30 @@ async function appendComment(parentId, childId) {
   commentElement.id = id;
   commentElement.classList.add('comment');
   commentElement.innerHTML = template;
+  parent.appendChild(commentElement);
 
   let clicked = false; // Closure state
 
   if (kids) {
-    commentElement.classList.add('pointer');
-    commentElement.onclick = event => {
-      event.preventDefault();
-      event.stopPropagation();
+    const repliesElement = document.getElementById(`${id}-replies`);
 
-      if (!clicked) {
-        kids.forEach(childId => {
-          appendComment(id, childId); // Recursive call
-        });
-        clicked = true;
-      }
-    };
+    if (repliesElement) {
+      repliesElement.classList.add('pointer');
+
+      repliesElement.onclick = event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!clicked) {
+          kids.forEach(childId => {
+            appendComment(id, childId); // Recursive call
+          });
+
+          clicked = true;
+        }
+      };
+    }
   }
-
-  parent.appendChild(commentElement);
 }
 
 const url = new URL(window.location.href);
