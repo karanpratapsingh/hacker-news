@@ -100,7 +100,7 @@ nav {
   display: grid;
   border-bottom: 1px solid black;
   padding-bottom: 0.5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
 }
 
 u[id*='-replies'] {

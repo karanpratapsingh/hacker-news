@@ -54,7 +54,11 @@ function appendStory(story) {
   const stories = document.getElementById('stories');
 
   let template = getStoryTemplate(story);
-  template += `<a class="text-muted" href="/story?id=${story.id}">comments</a>`;
+  template += `
+    <div>
+      <a class="text-muted" href="/story?id=${story.id}">comments</a>
+    </div>
+  `;
 
   const storyElement = document.createElement('div');
   storyElement.classList.add('story');
