@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  padding: 0rem 25vw;
+  padding: 0rem 25vw 1rem 25rem;
 }
 
 nav {
@@ -70,7 +70,7 @@ nav {
 }
 
 #more {
-  margin: 1rem 0rem;
+  margin-top: 1rem;
   padding: 0.5rem 1rem;
   font-style: italic;
   font-size: 14px;
@@ -109,6 +109,6 @@ u[id*='-replies'] {
 
 @media screen and (max-width: 720px) {
   body {
-    padding: 0rem 5vw;
+    padding: 0rem 5vw 1rem 5vw;
   }
 }
